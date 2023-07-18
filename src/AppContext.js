@@ -9,18 +9,22 @@ const AppProvider = ({ children }) => {
   const [username, setUsername] = useState(""); 
   const [authToken, setAuthToken] = useState(""); 
   const [books, setBooks] = useState([]);
+  const [credentials, setCredentials] = useState({ userName: "", password: "" });
 
   return (
     <AppContext.Provider
-      value={{
-        userId,
-        setUserId,
-        username,
-        setUsername,
-        authToken,
-        setAuthToken,
-        books,
-        setBooks,        
+      
+        value={{
+          userId,
+          setUserId,
+          username,
+          setUsername,
+          authToken,
+          setAuthToken,
+          books,
+          setBooks,
+          credentials,
+          setCredentials,        
       }}
     >
       {children}

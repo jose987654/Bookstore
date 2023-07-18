@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { AppProvider } from './AppContext';
+import AuthorizedEndpoint from './Components/Authorized';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <App />
+      {/* <AuthorizedEndpoint /> */}
+    </AppProvider>
   </React.StrictMode>
 );
 

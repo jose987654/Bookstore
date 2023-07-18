@@ -1,23 +1,91 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import CreateUser from "./Components/CreateUser";
+import Login from "./Components/Login";
+import AuthorizedEndpoint from "./Components/Authorized";
+import RetrieveUser from "./Components/RetrieveUser";
+import RetrieveAllBooks from "./Components/GetAllBooks";
+import CreateBookList from "./Components/CreateBooks";
+import UpdateBookDetails from "./Components/UpdateBook";
+import DeleteAllUserBooks from "./Components/DeleteAllBooks";
+import DeleteSingleUserBook from "./Components/DeleteBook";
+import DeleteCreatedUser from "./Components/DeleteUser";
+import RetrieveSingleBook from "./Components/GetSingleBook";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<CreateUser />} />
+          <Route path="/login" element={<Login />} />
+
+          <Route
+            path="/RetrieveUser"
+            element={
+              <AuthorizedEndpoint>
+                <RetrieveUser />{" "}
+              </AuthorizedEndpoint>
+            }
+          />
+          <Route
+            path="/RetrieveAllBooks"
+            element={
+              <AuthorizedEndpoint>
+                <RetrieveAllBooks />{" "}
+              </AuthorizedEndpoint>
+            }
+          />
+          <Route
+            path="/RetrieveSingleBook"
+            element={
+              <AuthorizedEndpoint>
+                <RetrieveSingleBook />{" "}
+              </AuthorizedEndpoint>
+            }
+          />
+          <Route
+            path="/CreateBookList"
+            element={
+              <AuthorizedEndpoint>
+                <CreateBookList />{" "}
+              </AuthorizedEndpoint>
+            }
+          />
+          <Route
+            path="/UpdateBookDetails"
+            element={
+              <AuthorizedEndpoint>
+                <UpdateBookDetails />{" "}
+              </AuthorizedEndpoint>
+            }
+          />
+          <Route
+            path="/DeleteAllUserBooks"
+            element={
+              <AuthorizedEndpoint>
+                <DeleteAllUserBooks />{" "}
+              </AuthorizedEndpoint>
+            }
+          />
+          <Route
+            path="/DeleteSingleUserBook"
+            element={
+              <AuthorizedEndpoint>
+                <DeleteSingleUserBook />{" "}
+              </AuthorizedEndpoint>
+            }
+          />
+          <Route
+            path="/DeleteCreatedUser"
+            element={
+              <AuthorizedEndpoint>
+                <DeleteCreatedUser />{" "}
+              </AuthorizedEndpoint>
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
