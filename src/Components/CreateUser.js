@@ -9,8 +9,9 @@ const CreateUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+        console.log("formdata",formData)
       const response = await axios.post(
-        "https://bookstore.toolsqa.com/Account/v1/User",
+        "https://bookstore.toolsqa.com/Account/v1/User'",
         formData
       );
       const { UserId, UserName } = response.data;
@@ -19,8 +20,9 @@ const CreateUser = () => {
       alert("Successfully created user");
       window.location.href = "/login";
     } catch (error) {
+        console.log("formdata",error)
       alert("Submission Failed");
-      window.location.reload();
+    //   window.location.reload();
     }
   };
 

@@ -20,12 +20,12 @@ const Login = () => {
       setUsername(formData.userName);
       setCredentials(formData);
 
-      // Now retrieve the user details using the generated token
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+      
+      // const config = {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // };
 
       const userResponse = await axios.post(
         "https://bookstore.toolsqa.com/Account/v1/User",
@@ -33,13 +33,15 @@ const Login = () => {
         // config
       );
 
-      const { UserId } = userResponse.data;
+      const { UserId } = userResponse.data.userId;
       setUserId(UserId);
 
       alert("Login successful!");
+      console.log("response", userResponse)
       window.location.href = "/RetrieveUser";
     } catch (error) {
       alert("Login failed. Please check your credentials.");
+      console.log("error", error)
     }
   };
 
